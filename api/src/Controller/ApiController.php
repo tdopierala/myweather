@@ -24,41 +24,6 @@ use App\Entity\Weather;
 class ApiController extends FOSRestController
 {
 	/**
-	 * @FOSRest\Get("/article")
-	 *
-	 * @return array
-	 */
-	public function getArticleAction()
-	{
-		$repository = $this->getDoctrine()->getRepository(Article::class);
-		
-		// query for a single Product by its primary key (usually "id")
-		$article = $repository->findAll();
-		
-		return View::create($article, Response::HTTP_OK , []);
-	}
-	/**
-	 * Create Article.
-	 * @FOSRest\Post("/article")
-	 *
-	 * @return array
-	 */
-	public function postArticleAction(Request $request)
-	{
-		$article = new Article();
-		
-		$article->setName($request->get('title'));
-		$article->setDescription($request->get('content'));
-
-		$em = $this->getDoctrine()->getManager();
-		$em->persist($article);
-		$em->flush();
-		
-		return View::create($article, Response::HTTP_CREATED , []);
-		
-	}
-
-	/**
 	 * @FOSRest\Get("/weather")
 	 *
 	 * @return array
@@ -68,13 +33,10 @@ class ApiController extends FOSRestController
 		$repository = $this->getDoctrine()->getRepository(Weather::class);
 		$weather = $repository->findRecentSearches();
 
-		$repository = $this->getDoctrine()->getRepository(Weather::class);
 		$topLocation = $repository->findTopLocations();
 
-		$repository = $this->getDoctrine()->getRepository(Weather::class);
 		$temperatures = $repository->findAllTemperatures();
 
-		$repository = $this->getDoctrine()->getRepository(Weather::class);
 		$count = $repository->countAll();
 		
 		return View::create([
@@ -84,6 +46,7 @@ class ApiController extends FOSRestController
 			"weather" => $weather
 		], Response::HTTP_OK , []);
 	}
+
 	/**
 	 * @FOSRest\Post("/weather")
 	 *
@@ -112,7 +75,5 @@ class ApiController extends FOSRestController
 		$em->flush();
 		
 		return View::create($weather, Response::HTTP_CREATED , []);
-		//return View::create($weather, Response::HTTP_OK , []);
-		
 	}
 }
