@@ -1,7 +1,5 @@
 var gmap = {
 
-	google: null,
-
 	map: null,
 
 	markers: [],
@@ -57,7 +55,7 @@ var gmap = {
 	init(){
 
 		this.map = new google.maps.Map(
-			document.getElementById('map'), 
+			document.getElementById('map'),
 			{
 				center: this.position,
 				zoom: 7,
@@ -75,8 +73,8 @@ var gmap = {
 
 		var styledMapType = new google.maps.StyledMapType(this.styles);
 
-		document.getElementById('latclicked').innerHTML = this.position.lat;
-		document.getElementById('longclicked').innerHTML = this.position.lng;
+		$("#latclicked").html(this.position.lat);
+		$("#longclicked").html(this.position.lng);
 
 		this.map.mapTypes.set('styled_map', styledMapType);
 		this.map.setMapTypeId('styled_map');
@@ -87,8 +85,8 @@ var gmap = {
 			let _lat = event.latLng.lat();
 			let _lng = event.latLng.lng();
 
-			document.getElementById('latclicked').innerHTML = _lat;
-			document.getElementById('longclicked').innerHTML =  _lng;
+			$("#latclicked").html(_lat);
+			$("#longclicked").html(_lng);
 
 			for (let i = 0; i < gmap.markers.length; i++) {
 				gmap.markers[i].setMap(null);
@@ -118,7 +116,7 @@ var gmap = {
 					method: "POST",
 					data: weather,
 					complete: function(xhr, status){
-						//console.log("Ajax request complete: " + status);
+
 						let req_time = new Date().getTime() - req_start;
 						
 						let popup = $("<div>").attr("id", "xpopup").append(
@@ -170,12 +168,6 @@ var gmap = {
 				map: map, 
 				title: event.latLng.lat()+', '+event.latLng.lng()
 			});
-			
-			// Update lat/long value of div when the marker is clicked
-			marker.addListener('click', function() {
-				document.getElementById('latclicked').innerHTML = event.latLng.lat();
-				document.getElementById('longclicked').innerHTML =  event.latLng.lng();
-			});
 		}); */
 	},
 
@@ -185,7 +177,7 @@ var gmap = {
 			navigator.geolocation.getCurrentPosition(
 				function(position){
 
-					console.log({message: "Location found.", latitude: position.coords.latitude, longitude: position.coords.longitude});
+					//console.log({message: "Location found.", latitude: position.coords.latitude, longitude: position.coords.longitude});
 
 					var pos = {
 						lat: position.coords.latitude,

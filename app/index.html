@@ -17,13 +17,11 @@
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA97EJQ557nR16jGfyB42A4T9mTT9WTSdY" async defer></script>
 
-	<script src="./js/settings.js"></script>
 	<script src="./js/google.js"></script>
 	<script src="./js/app.js"></script>
 	<script src="./js/main.js"></script>
-	<script>
-		var api_url = "https://symfony4-rest-api.omicron00.local/";
-	</script>
+
+	<script> var api_url = "https://myweatherapi.omicron00.local/"; </script>
 
 </head>
 <body>
@@ -61,8 +59,8 @@
 		</section>
 
 		<section id="map-box" class="body-section">
-			<div class="container">
-				<div>latitude: <span id="latclicked"></span> longitude: <span id="longclicked"></span></div>
+			<div class="">
+				<div class="coordinates">latitude: <span id="latclicked"></span> longitude: <span id="longclicked"></span></div>
 				<div id="map"></div>
 			</div>
 		</section>
@@ -109,6 +107,18 @@
 			</div>
 		</section>
 	</main>
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-6">
+					<span class="footer-title"><a href="./">My<span class="top-color">Weather</span></a></span>
+					<span>&copy; 2019</span>
+					| <span><a href="#">Privacy policy</a></span>
+				</div>
+			</div>
+		</div>
+	</footer>
 
 	<div id="popup"></div>
 </body>
