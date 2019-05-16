@@ -1,7 +1,9 @@
+Header Set Access-Control-Allow-Credentials: true
+Header Set Access-Control-Allow-Origin *
+Header Set Access-Control-Allow-Methods "POST, GET"
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
-
-Header set Access-Control-Allow-Origin "*"

@@ -4,7 +4,7 @@ var gmap = {
 
 	markers: [],
 
-	position: {lat: 40.27, lng: -100.077},
+	position: {lat: 52.071, lng: 19.330},
 
 	styles: [{
 		"featureType": "administrative",
@@ -66,7 +66,7 @@ var gmap = {
 		);
 
 		this.initMap();
-		this.getLocation();
+		//this.getLocation();
 	},
 
 	initMap() {
@@ -93,67 +93,80 @@ var gmap = {
 			}
 
 			var req_start = new Date().getTime();
-			$.get("https://api.openweathermap.org/data/2.5/weather?lat="+ _lat +"&lon="+ _lng +"&APPID=46a61e9348b237e1836ee6c9f7301638", function(data){
+			$.ajax({
+				url: gmap.proxyMixer(openweathermap_url + "data/2.5/weather?lat="+ _lat +"&lon="+ _lng +"&APPID=" + openweathermap_appid), 
+				method: "GET",
+				crossDomain: true,
+				//dataType: "jsonp",
+				cache: false,
+				//xhrFields: { withCredentials: true },
+				success: function(data){
+					let req_time = new Date().getTime() - req_start;
 
-				var weather = {
-					"cityid": data.id,
-					"cityname": data.name,
-					"latitude": _lat,
-					"longitude": _lng,
-					"tempavg": data.main.temp,
-					"tempmin": data.main.temp_min,
-					"tempmax": data.main.temp_max,
-					"clouds": data.clouds.all,
-					"windspeed": data.wind.speed,
-					"winddeg": data.wind.deg,
-					"description": data.weather[0].description,
-					"condid": data.weather[0].id,
-					"dt": data.dt
-				};
+					var weather = {
+						"cityid": data.id,
+						"cityname": data.name,
+						"latitude": _lat,
+						"longitude": _lng,
+						"tempavg": data.main.temp,
+						"tempmin": data.main.temp_min,
+						"tempmax": data.main.temp_max,
+						"clouds": data.clouds.all,
+						"windspeed": data.wind.speed,
+						"winddeg": data.wind.deg,
+						"description": data.weather[0].description,
+						"condid": data.weather[0].id,
+						"dt": req_time
+					};
 
-				$.ajax({
-					url: "https://symfony4-rest-api.omicron00.local/api/weather",
-					method: "POST",
-					data: weather,
-					complete: function(xhr, status){
+					$.ajax({
+						url: api_url + "api/weather",
+						method: "POST",
+						data: weather,
+						complete: function(xhr, status){
+							
+							let popup = $("<div>").attr("id", "xpopup").append(
+								$('<div>').addClass("popup-box")
+									//.append('<button type="button" class="close popupclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>')
+									.append( $('<div>').html( $('<img>').attr({'alt': data.weather[0].description, 'src': openweathermap_url + 'img/w/'+ data.weather[0].icon +'.png', 'width': "70"}) ) )
+									.append( $('<div>').html("Location: <strong>" + data.name + "</strong>"))
+									.append( $('<div>').html("Temp: <strong>" + Math.round(data.main.temp - 273.15) + "&deg; C</strong>"))
+									.append( $('<div>').html("Clouds: <strong>" + data.clouds.all + "%</strong>"))
+									.append( $('<div>').html("Wind: <strong>" + data.wind.speed + " m/s</strong>"))
+									//.append( $('<div>').html("Conditions: <strong>" + data.weather[0].main + "</strong>"))
+									.append( $('<div>').html("Description: <strong>" + data.weather[0].description + "</strong>"))
+							).html();
+					
+							let marker = new google.maps.Marker({
+								position: {lat: _lat, lng: _lng},
+								map: gmap.map,
+								title: data.name
+							});
 
-						let req_time = new Date().getTime() - req_start;
-						
-						let popup = $("<div>").attr("id", "xpopup").append(
-							$('<div>').addClass("popup-box")
-								//.append('<button type="button" class="close popupclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>')
-								.append( $('<div>').html( $('<img>').attr({'alt': data.weather[0].description, 'src': 'https://openweathermap.org/img/w/'+ data.weather[0].icon +'.png', 'width': "70"}) ) )
-								.append( $('<div>').html("Location: <strong>" + data.name + "</strong>"))
-								.append( $('<div>').html("Temp: <strong>" + Math.round(data.main.temp - 273.15) + "&deg; C</strong>"))
-								.append( $('<div>').html("Clouds: <strong>" + data.clouds.all + "%</strong>"))
-								.append( $('<div>').html("Wind: <strong>" + data.wind.speed + " m/s</strong>"))
-								//.append( $('<div>').html("Conditions: <strong>" + data.weather[0].main + "</strong>"))
-								.append( $('<div>').html("Description: <strong>" + data.weather[0].description + "</strong>"))
-						).html();
-				  
-						let marker = new google.maps.Marker({
-							position: {lat: _lat, lng: _lng},
-							map: gmap.map,
-							title: data.name
-						});
+							gmap.markers.push(marker);
 
-						gmap.markers.push(marker);
+							let infowindow = new google.maps.InfoWindow({
+								content: popup
+							});
 
-						let infowindow = new google.maps.InfoWindow({
-							content: popup
-						});
+							infowindow.open(gmap.map, marker);
 
-						infowindow.open(gmap.map, marker);
-
-						$('#map').unblock();
-					},
-					success: function(data, status, xhr){
-						//console.log("Ajax request finished succesfully: " + status);
-					},
-					error: function(xhr, status, e){
-						//console.log(status);
-					}
-				});
+							$('#map').unblock();
+						},
+						success: function(data, status, xhr){
+							
+							$('#map').unblock();
+						},
+						error: function(xhr, status, e){
+							
+							$('#map').unblock();
+						}
+					});
+				},
+				error: function(xhr, status, e){
+					console.log(status);
+					$('#map').unblock();
+				}
 			});
 		});
 
@@ -189,6 +202,15 @@ var gmap = {
 			);
 		} else {
 			console.log("Geolocation is not supported by this browser.");
+		}
+	},
+
+	proxyMixer(url){
+
+		if(proxy){
+			return "./proxy.php?url=" + encodeURIComponent(url);
+		} else {
+			return url;
 		}
 	}
 };

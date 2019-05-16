@@ -11,17 +11,22 @@
 	<link rel="stylesheet" href="./css/styles.css">
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="https://malsup.github.io/jquery.blockUI.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="./js/jquery.blockUI.js"></script>
+	<script src="./js/popper.min.js" ></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA97EJQ557nR16jGfyB42A4T9mTT9WTSdY" async defer></script>
 
-	<script src="./js/google.js"></script>
+	<script src="./js/gmap.js"></script>
 	<script src="./js/app.js"></script>
 	<script src="./js/main.js"></script>
 
-	<script> var api_url = "https://myweatherapi.omicron00.local/"; </script>
+	<script> 
+		var api_url = "https://api.dopierala.net.pl/"; 
+		var openweathermap_url = "https://api.openweathermap.org/";
+		var openweathermap_appid = "46a61e9348b237e1836ee6c9f7301638";
+		var proxy = true;
+	</script>
 
 </head>
 <body>

@@ -46,7 +46,7 @@ var app = {
 								.append( $("<td>").html(Math.round(_data[i].tempavg - 273.15) + "&deg; C") )
 								.append( $("<td>").text(_data[i].clouds + "%") )
 								.append( $("<td>").text(_data[i].windspeed + " m/s") )
-								.append( $("<td>").text(dt) )
+								.append( $("<td>").text((dt/1000) + " s") )
 						);
 					}
 
