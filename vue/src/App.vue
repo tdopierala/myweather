@@ -1,29 +1,32 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
-</template>
+	<div id="app">
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+		<header class="container">
+			<div class="row">
+				<div class="col-12 col-md-4 col-lg-6">
+					<h1><a href="#">Weather<span>Info</span></a></h1>
+				</div>
+				<div class="d-none d-sm-block col-sm-12 col-md-8 col-lg-6">
+					<nav>
+						<ul>
+							<li><router-link to="/">Forecasts</router-link></li>
+							<li><router-link to="/map">Map</router-link></li>
+							<li><router-link to="/statistics">Statistics</router-link></li>
+							<li><router-link to="/photos">Photos</router-link></li>
+							<li><router-link to="/news">News</router-link></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<router-view/>
+		</main>
+
+		<footer>
+			<span>WeatherInfo C 2019 | <a href="#">Privacy policy</a></span>
+		</footer>
+
+	</div>
+</template>
