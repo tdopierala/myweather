@@ -1,0 +1,21 @@
+.statistics-wrapper {
+
+	.container {
+
+		.statistics-box {
+			background-color: $sec-color;
+			font-size: 36px;
+
+			padding: 15px;
+			margin: 20px 0;
+
+			* { display: inline-block; }
+
+			span {
+				font-size: 1.5rem;
+				font-weight: bold;
+				margin-left: 10px
+			}
+		}
+	}
+}

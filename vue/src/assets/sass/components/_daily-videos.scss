@@ -1,0 +1,41 @@
+.daily-videos-wrapper {
+
+	padding: 20px 0;
+	background-color: $bg-sec-color;
+
+	p { font-size: 1.2em; }
+
+	figure {
+
+		min-height: 155px;
+		width: 100%;
+		position: relative;
+
+		a:hover {
+			color: $prime-color;
+
+			div {
+				display: block;
+			}
+		}
+
+		img {
+			position: absolute;
+			width: 100%;
+		}
+
+		div {
+			display: none;
+			position: absolute;
+			font-size: 3em;
+			width: 2em;
+			height: 2em;
+			padding: 15px;
+			text-align: center;
+			margin: 40px 95px;
+			color: #ffff;
+			/* background-color: #ffff;
+			border-radius: 13px; */
+		}
+	}
+}

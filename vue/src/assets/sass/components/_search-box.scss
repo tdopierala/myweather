@@ -1,0 +1,75 @@
+.search-box-wrapper {
+
+	padding: 10px 0;
+	background-color: $bg-sec-color;
+	border-bottom: 1px solid #ccc;
+
+	p { margin: 0; }
+
+	form {
+		padding-right: 50px;
+
+		a {
+			border: 1px solid #ccc;
+			border-left: none;
+			font-size: 16px;
+			padding: 15px 10px 15px 5px;
+			display: inline-block;
+			width: 10%;
+			text-align: center;
+		}
+
+		input {
+			background: none;
+			border-right: none;
+			display: inline-block;
+			width: 90%;
+			
+			box-shadow: none;
+			border: 1px solid #ccc;
+			border-right: none;
+			font-size: 16px;
+			padding: 15px 0 15px 20px;
+			font-style: italic;
+			color: #555555;
+		}
+	}
+
+	.container > .row > div { margin: 30px 0; }
+
+	.btn-location-add {
+		width: 52px;
+		height: 52px;
+		float: left;
+		background-color: $trd-color;
+		border-radius: 500px;
+		margin-right: 18px;
+		text-align: center;
+		font-weight: bold;
+		font-size: 30px;
+		color: #fff;
+		line-height: 50px;
+	}
+
+	.btn-location-add:hover {
+		background-color: $sec-color;
+		color: #000;
+	}
+
+	.location-box {
+		margin-left: 70px;
+
+		:first-child {
+			font-size: 30px;
+			line-height: 30px;
+
+		}
+
+		:nth-child(2) {
+			font-size: 1.2em;
+			line-height: 20px;
+			color: #666;
+			margin-top: 5px;
+		}
+	}
+}

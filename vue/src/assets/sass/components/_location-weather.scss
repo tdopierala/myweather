@@ -1,0 +1,68 @@
+.location-weather-wrapper {
+
+	background-position: top center;
+	background-repeat: no-repeat;
+	min-height: 400px;
+
+	.container {
+		background-color: rgba(0, 0, 0, 0.6);
+		color: $light-color;
+
+		.current-location {
+
+			h3 { font-size: 3.5em; font-weight: bold; }
+
+			p {
+				font-size: 2em;
+				margin: 25px 0;
+
+				small { font-size: .5em; }
+			}
+
+			.current-conditions { font-size: 4em; }
+
+			.current-conditions-ico { font-size: 3em; }
+
+			.current-date {
+				margin: 0 0 60px 0;
+				text-align: right;
+				font-size: 2em;
+				line-height: 1.5em;
+			}
+		}
+
+		.current-location > div {
+			width: 50%;
+			float: left;
+			padding: 30px 10px 20px 30px;
+		}
+
+		.forecast-location { padding-right: 0; }
+
+		.forecast-location > div {
+			display: inline-block;
+			padding-top: 20px;
+			background-color: rgba(0, 0, 0, 0.5);
+			font-size: 1.5em;
+
+			div {
+				margin-top: 15px;
+				padding: 0 29px;
+				text-align: center;
+			}
+
+			:first-child { font-weight: bold; /* padding-left: 29px; */ }
+
+			:nth-child(2) { font-size: 2em; }
+			:nth-child(3) { font-weight: bold; }
+
+			:nth-child(5) {
+				background-color: rgba(0, 253, 13, 0.3);
+				font-size: .7em;
+				padding-top: 10px;
+				/* padding-left: 29px; */
+				padding-bottom: 10px;
+			}
+		}
+	}
+}
