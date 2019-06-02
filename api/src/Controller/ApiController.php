@@ -24,6 +24,16 @@ use App\Entity\Weather;
 class ApiController extends FOSRestController
 {
 	/**
+	 * @FOSRest\Options("/weather")
+	 *
+	 * @return array
+	 */
+	public function optionsWeatherAction()
+	{
+		return View::create([], Response::HTTP_OK , []);
+	}
+
+	/**
 	 * @FOSRest\Get("/weather")
 	 *
 	 * @return array

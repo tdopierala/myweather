@@ -81,6 +81,11 @@ class Weather
 	 */
 	public $dt;
 
+	/**
+	 * @ORM\Column(type="datetime")
+	 */
+	public $created;
+
 
 	public function getCityid()
 	{

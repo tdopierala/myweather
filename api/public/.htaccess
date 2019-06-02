@@ -1,6 +1,14 @@
-Header Set Access-Control-Allow-Credentials: true
-Header Set Access-Control-Allow-Origin *
-Header Set Access-Control-Allow-Methods "POST, GET"
+Header add Access-Control-Allow-Origin "*"
+#Header Set Access-Control-Allow-Credentials: true
+Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
+Header add Access-Control-Allow-Headers "origin, x-requested-with, content-type, access-control-allow-origin"
+#Header Set Access-Control-Request-Method: *
+#Header Set Access-Control-Request-Headers: *
+#Header Set Access-Control-Max-Age: 600
+
+#Header add Content-Type: application/json
+
+#Header Set Allow: OPTIONS, GET, HEAD, POST
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
