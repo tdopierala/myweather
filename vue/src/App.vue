@@ -24,7 +24,7 @@
 			<router-view/>
 		</main>
 
-		<footer>
+		<footer class="container">
 			<span>WeatherInfo C 2019 | <a href="#">Privacy policy</a></span>
 		</footer>
 

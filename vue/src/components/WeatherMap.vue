@@ -1,7 +1,7 @@
 <template>
 	<div class="weather-map-wrapper">
 		<div id="googleMap"></div>
-		<BlockUI v-if="dataLoading">
+		<BlockUI v-if="gettingData || sendingData">
 			<div class="lds-facebook tblack"><div></div><div></div><div></div></div>
 			<p>Loading, please wait...</p>
 		</BlockUI>
@@ -30,6 +30,8 @@ export default {
 			google: null,
 			map: null,
 			markers: [],
+			gettingData: false,
+			sendingData: false,
 			dataLoading: false,
 		};
 	},
@@ -42,7 +44,8 @@ export default {
 				const lng = event.latLng.lng();
 				const reqStart = new Date().getTime();
 
-				this.dataLoading = true;
+				this.gettingData = true;
+				this.sendingData = true;
 
 				Axios.get(`${api}data/2.5/weather?lat=${lat}&lon=${lng}&APPID=${appid}`)
 					.then((response) => {
@@ -65,6 +68,20 @@ export default {
 							condid: response.data.weather[0].id,
 							dt: reqTime,
 						};
+
+						const postHeaders = {
+							headers: {
+								Accept: '*/*',
+								'Access-Control-Allow-Origin': '*',
+								'Content-Type': 'application/json; charset=UTF-8',
+							},
+						};
+
+						Axios.post('https://api.dopierala.net.pl/api/weather', weather, postHeaders)
+							.then(() => {
+								// console.log(getResponse);
+								this.sendingData = false;
+							});
 
 						const popup = `
 							<div class="popup-box">
@@ -90,7 +107,7 @@ export default {
 
 						infowindow.open(this.map, marker);
 
-						this.dataLoading = false;
+						this.gettingData = false;
 					});
 			});
 		},

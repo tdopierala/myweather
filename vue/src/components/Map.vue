@@ -1,9 +1,6 @@
 <template>
 	<div class="map-wrapper">
 		<WeatherMap />
-		<!-- <BlockUI>
-			<div class="lds-facebook tblack"><div></div><div></div><div></div></div>
-		</BlockUI> -->
 	</div>
 </template>
 
@@ -17,12 +14,7 @@ export default {
 	},
 	data() {
 		return {
-			message: 'Test message',
 		};
 	},
 };
 </script>
-
-<style>
-
-</style>

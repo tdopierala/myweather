@@ -1,3 +1,4 @@
+// import fontawesome from '@utils/fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
 	faUserSecret,
@@ -10,6 +11,11 @@ import {
 	faSun,
 	faSmog,
 	faCloudShowersHeavy,
+	faCity,
+	faTemperatureHigh,
+	faTemperatureLow,
+	faThermometerHalf,
+	faListOl,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import BlockUI from 'vue-blockui';
@@ -31,6 +37,11 @@ library.add(
 	faSun,
 	faSmog,
 	faCloudShowersHeavy,
+	faCity,
+	faTemperatureHigh,
+	faTemperatureLow,
+	faThermometerHalf,
+	faListOl,
 );
 
 Vue.use(BlockUI);
