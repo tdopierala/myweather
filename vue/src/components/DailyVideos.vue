@@ -33,7 +33,8 @@
 				<youtube
 					v-bind:video-id="videoId"
 					v-bind:player-width="765"
-					v-bind:player-height="430">
+					v-bind:player-height="430"
+					v-bind:player-vars="{ 'autoplay': 1, 'controls': 0, 'autohide': 1, 'wmode': 'opaque', 'origin': 'http://localhost:8080' }">
 				</youtube>
 			</div>
 		</b-modal>
