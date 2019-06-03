@@ -3,11 +3,13 @@
 		<!------------- DailyVideos ---------------->
 		<div class="container">
 			<div class="row">
-				<div class="col-12 col-lg-3">
+				<div class="d-none d-md-block col-12 col-lg-3">
 					<h2>Daily Weather Forecast Videos</h2>
 					<p>Bireasrtasas mioyreas deuyasa souygas dekiertas</p>
 				</div>
-				<div class="col-12 col-md-4 col-lg-3" v-for="(video, index) in videos" v-bind:key="index">
+				<div class="d-none d-md-block col-12 col-md-4 col-lg-3"
+					v-for="(video, index) in videos"
+					v-bind:key="index">
 					<figure>
 						<a href="#" v-on:click="showVideo(video, $event)">
 							<!-- <img src="https://picsum.photos/id/10/268/155" alt="video1"> -->
