@@ -5,17 +5,23 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="row">
-						<div class="col-sm-12 col-xl-6 current-location">
+						<div class="d-sm-none d-md-block d-xl-none col-md-1 col-lg-2"></div>
+						<!-- d-none d-sm-block d-lg-none -->
+						<div class="col-sm-12 col-md-10 col-lg-8 col-xl-6 current-location">
 							<div>
 								<h3 class="current-place">{{ weather.location }}</h3>
 								<p class="current-time">{{ time }} <small>{{ ampm }}</small></p>
+							</div>
+							<div>
+								<p class="current-date">{{ day }},<br/>{{ month }}</p>
+							</div>
+							<div>
 								<p class="current-conditions">
 									<font-awesome-icon v-bind:icon="icon(weather.conditionid)" />
 									{{ temp(weather.temp) }}&deg;
 								</p>
 							</div>
 							<div>
-								<p class="current-date">{{ day }},<br/>{{ month }}</p>
 								<p class="current-conditions">{{ weather.condition }}</p>
 								<p class="current-conditions-ico">
 									<font-awesome-icon icon="cloud" />
@@ -24,7 +30,7 @@
 							</div>
 						</div>
 						<div
-							class="d-none d-lg-block col-lg-12 col-xl-6 forecast-location"
+							class="d-none d-md-block col-md-12 col-xl-6 forecast-location"
 							v-if="forecasts.length > 0">
 							<div v-for="(forecast, index) in forecasts" v-bind:key="index">
 								<div>{{ shortDay(index + 1) }}</div>
@@ -66,14 +72,11 @@ export default {
 		month() { return moment().format('MMMM Do'); },
 	},
 	methods: {
-		icon(id) {
-			return wicons[id].icon;
-		},
+		icon(id) { return wicons[id].icon; },
 		temp(temp) {
 			if (temp > 0) {
 				return Math.round(temp - 273.15);
 			}
-
 			return temp;
 		},
 		shortDay(days) { return moment().add(days, 'd').format('dd'); },

@@ -21,9 +21,12 @@ import {
 	faPooStorm,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import BlockUI from 'vue-blockui';
 
 import Vue from 'vue';
+import BootstrapVue from 'bootstrap-vue';
+import VueYouTubeEmbed from 'vue-youtube-embed';
+import BlockUI from 'vue-blockui';
+
 import App from './App.vue';
 import router from './router';
 
@@ -50,6 +53,8 @@ library.add(
 	faPooStorm,
 );
 
+Vue.use(BootstrapVue);
+Vue.use(VueYouTubeEmbed);
 Vue.use(BlockUI);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 

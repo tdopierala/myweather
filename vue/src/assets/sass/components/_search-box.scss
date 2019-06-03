@@ -7,7 +7,7 @@
 	p { margin: 0; }
 
 	form {
-		padding-right: 50px;
+		margin: 0 15px;
 
 		a {
 			border: 1px solid #ccc;
@@ -70,6 +70,30 @@
 			line-height: 20px;
 			color: #666;
 			margin-top: 5px;
+		}
+	}
+
+	.mediaTest {
+		width: 500px;
+		height: 200px;
+		border: 1px solid #000;
+	}
+
+	@media screen and (max-width: 992px) {
+		.mediaTest {
+			background-color: greenyellow;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.mediaTest {
+			background-color: blueviolet;
+		}
+	}
+
+	@media screen and (max-width: 300px) {
+		.mediaTest {
+			background-color: aqua;
 		}
 	}
 }

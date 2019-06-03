@@ -2,8 +2,9 @@
 	<div class="search-box-wrapper">
 		<!------------- SearchBox ---------------->
 		<div class="container">
+			<!-- <div class="mediaTest"></div> -->
 			<div class="row">
-				<div class="col-12 col-md-6">
+				<div class="col-12 col-lg-6">
 					<form>
 						<input type="text" name="search" placeholder="Search location">
 						<a href="#">
@@ -12,7 +13,7 @@
 						</a>
 					</form>
 				</div>
-				<div class="col-12 col-md-6">
+				<div class="d-none d-lg-block col-12 col-lg-6">
 					<a href="#" class="btn-location-add">+</a>
 					<div class="location-box">
 						<p>Add location</p>
