@@ -36,6 +36,19 @@
 			<div class="row">
 				<div class="col-12">
 					<table class="table">
+						<thead>
+							<tr>
+								<th>No.</th>
+								<th>Location</th>
+								<th>temperature</th>
+								<th>Clouds</th>
+								<th>Wind speed</th>
+								<th>Latitude</th>
+								<th>Longitude</th>
+								<th>Request time</th>
+								<th>Created</th>
+							</tr>
+						</thead>
 						<tbody>
 							<tr v-for="(weather, id) in weatherHistory" :key="id">
 								<td v-html="weather.id"></td>
@@ -43,9 +56,9 @@
 								<td v-html="calculateTemp(weather.tempavg) + '&deg; C'"></td>
 								<td v-html="weather.clouds + '%'"></td>
 								<td v-html="weather.windspeed + 'm/s'"></td>
-								<td v-html="weather.dt/1000 + 's'"></td>
 								<td v-html="parseFloat(weather.latitude).toPrecision(6)"></td>
 								<td v-html="parseFloat(weather.longitude).toPrecision(6)"></td>
+								<td v-html="weather.dt/1000 + 's'"></td>
 								<td>{{ weather.created }}</td>
 							</tr>
 						</tbody>
@@ -53,6 +66,10 @@
 				</div>
 			</div>
 		</div>
+		<BlockUI v-if="gettingData">
+			<div class="lds-facebook tblack"><div></div><div></div><div></div></div>
+			<p>Loading, please wait...</p>
+		</BlockUI>
 	</div>
 </template>
 
@@ -74,6 +91,7 @@ export default {
 				_cityname: '',
 			}],
 			weatherHistory: [],
+			gettingData: false,
 		};
 	},
 	methods: {
@@ -82,6 +100,7 @@ export default {
 		},
 	},
 	created() {
+		this.gettingData = true;
 		Axios.get('https://api.dopierala.net.pl/api/weather')
 			.then((response) => {
 				/* eslint no-underscore-dangle: off */
@@ -97,6 +116,8 @@ export default {
 					weather.created = moment(weather.created).format('YYYY-MM-DD HH:mm:ss');
 					this.weatherHistory.push(weather);
 				}
+
+				this.gettingData = false;
 			});
 	},
 };

@@ -7,7 +7,9 @@ import {
 	faUmbrella,
 	faCloud,
 	faCloudSun,
+	faCloudRain,
 	faCloudSunRain,
+	faCloudMeatball,
 	faSun,
 	faSmog,
 	faCloudShowersHeavy,
@@ -16,6 +18,7 @@ import {
 	faTemperatureLow,
 	faThermometerHalf,
 	faListOl,
+	faPooStorm,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import BlockUI from 'vue-blockui';
@@ -33,7 +36,9 @@ library.add(
 	faUmbrella,
 	faCloud,
 	faCloudSun,
+	faCloudRain,
 	faCloudSunRain,
+	faCloudMeatball,
 	faSun,
 	faSmog,
 	faCloudShowersHeavy,
@@ -42,6 +47,7 @@ library.add(
 	faTemperatureLow,
 	faThermometerHalf,
 	faListOl,
+	faPooStorm,
 );
 
 Vue.use(BlockUI);
