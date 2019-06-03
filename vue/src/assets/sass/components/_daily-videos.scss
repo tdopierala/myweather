@@ -7,35 +7,64 @@
 
 	figure {
 
-		min-height: 155px;
 		width: 100%;
 		position: relative;
 
-		a:hover {
-			color: $prime-color;
 
-			div {
+		a {
+			position: relative;
+
+			:nth-child(2) {
+				display: none;
+				width: 35px;
+				margin-left: -17px;
+				height: 40px;
+				margin-top: -20px;
+				font-size: 40px;
+				color: #ffff;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+			}
+		}
+
+		a:hover {
+			:nth-child(2) {
 				display: block;
 			}
 		}
 
-		img {
-			position: absolute;
+		img { 
 			width: 100%;
+			height: 80%;
+			object-fit: cover;
+			/* object-position: -50% 0; */
+		}
+	}
+}
+
+#video-modal {
+
+	.modal-body {
+		position: relative;
+
+		.video-loader {
+			width: 200px;
+			margin-left: -100px;
+			height: 90px;
+			margin-top: -45px;
+			position: relative;
+			top: 50%;
+			left: 50%;
+			text-align: center;
+			/* z-index: -1; */
 		}
 
-		div {
-			display: none;
-			position: absolute;
-			font-size: 3em;
-			width: 2em;
-			height: 2em;
-			padding: 15px;
-			text-align: center;
-			margin: 40px 95px;
-			color: #ffff;
-			/* background-color: #ffff;
-			border-radius: 13px; */
+		.video-box {
+			position: relative;
+			width: 765px;
+			height: 430px;
+			top: -45px;
 		}
 	}
 }
