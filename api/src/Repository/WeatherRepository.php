@@ -23,9 +23,9 @@ class WeatherRepository extends EntityRepository
 	public function findRecentSearches(): array
 	{
 		return $this->getEntityManager()
-			->createQuery('SELECT w.cityname, w.latitude, w.longitude, w.tempavg, w.clouds, w.windspeed, w.winddeg, w.description, w.dt 
+			->createQuery('SELECT w.cityname, w.latitude, w.longitude, w.tempavg, w.clouds, w.windspeed, w.winddeg, w.description, w.dt, w.created
 							FROM App:Weather w ORDER BY w.id DESC')
-			->setMaxResults(10)
+			->setMaxResults(15)
 			->getResult();
 	}
 
