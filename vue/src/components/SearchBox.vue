@@ -33,13 +33,15 @@ export default {
 	data() {
 		return {
 			google: null,
-			googleHolder: null,
 			searchInput: null,
-			searchBox: null,
+			autocomplete: null,
+			place: null,
 		};
 	},
 	methods: {
-
+		fillInAddres() {
+			console.log('fillInAddress');
+		},
 	},
 	/* computed: {
 		google: {
@@ -53,39 +55,49 @@ export default {
 			},
 		},
 	}, */
-	created() {
-		console.log('created');
-		/* const search = document.getElementById('locSearch');
-		console.log(search);
-		this.searchInput = search; */
-
-		// const searchBox = new this.google.maps.places.SearchBox(searchInput);
-	},
 	async mounted() {
-		console.log('mounted');
-
 		try {
 			const search = document.getElementById('locSearch');
-			console.log(search);
 			this.searchInput = search;
 
-			this.google = await gmapsInit();
-			// console.log(this.google);
-			this.searchBox = new this.google.maps.places.SearchBox(this.searchInput);
+
+			const google = await gmapsInit();
+			this.google = google;
+			// this.searchBox = new google.maps.Places.SearchBox(this.searchInput);
+
+			const autocomplete = new google.maps.places.Autocomplete(search, { types: ['geocode'] });
+			this.autocomplete = autocomplete;
+
+			autocomplete.setFields([
+				'geometry',
+				// 'photos',
+			]);
+
+			autocomplete.addListener('place_changed', () => {
+				this.place = autocomplete.getPlace();
+
+				this.$emit('getPlace', this.place);
+				/* console.log(place.photos.length);
+				for (let i = 0; i < place.photos.length; i += 1) {
+					console.log(place.photos[i].getUrl());
+				} */
+			});
+
+			/*
+			const geocoder = new google.maps.Geocoder();
+			geocoder.geocode({ address: 'Osowa góra, Bydgoszcz' }, (results, status) => {
+				if (status !== 'OK' || !results[0]) {
+					throw new Error(status);
+				}
+				console.log(results);
+				// map.setCenter(results[0].geometry.location);
+				// map.fitBounds(results[0].geometry.viewport);
+			});
+			*/
 		} catch (error) {
 			// eslint-disable-next-line no-console
 			console.error(error);
 		}
-	},
-	watch: {
-		google: {
-			immediate: true,
-			handler() {
-				// console.log('watch google');
-				// console.log(this.searchInput);
-				// this.searchBox = new this.google.maps.places.SearchBox(this.searchInput);
-			},
-		},
 	},
 };
 </script>
