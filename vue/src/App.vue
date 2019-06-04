@@ -4,7 +4,7 @@
 		<header class="container">
 			<div class="row">
 				<div class="col-md-12 col-lg-4 col-xl-6">
-					<h1><a href="#">Weather<span>Info</span></a></h1>
+					<h1><a href="#">My<span>Weather</span></a></h1>
 				</div>
 				<div class="d-none d-sm-block col-md-12 col-lg-8 col-xl-6">
 					<nav>

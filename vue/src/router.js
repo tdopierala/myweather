@@ -5,32 +5,32 @@ import Forecasts from './components/Forecasts.vue';
 Vue.use(Router);
 
 export default new Router({
-	mode: 'history',
-	base: process.env.BASE_URL,
+	// mode: 'history',
+	// base: process.env.BASE_URL,
 	routes: [
 		{
 			path: '/',
-			name: 'Forecasts',
+			name: 'forecasts',
 			component: Forecasts,
 		},
 		{
 			path: '/map',
-			name: 'Map',
+			name: 'map',
 			component: () => import('./components/Map.vue'),
 		},
 		{
 			path: '/statistics',
-			name: 'Statistics',
+			name: 'statistics',
 			component: () => import('./components/Statistics.vue'),
 		},
 		{
 			path: '/photos',
-			name: 'Photos',
+			name: 'photos',
 			component: () => import('./components/Photos.vue'),
 		},
 		{
 			path: '/news',
-			name: 'News',
+			name: 'news',
 			component: () => import('./components/News.vue'),
 		},
 	],

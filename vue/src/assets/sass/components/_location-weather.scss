@@ -10,7 +10,7 @@
 
 		.current-location {
 
-			h3 { font-size: 2em; font-weight: bold; }
+			h3 { font-size: 2.5em; font-weight: bold; }
 
 			p {
 				font-size: 1.5em;
@@ -42,7 +42,7 @@
 				width: 60%; 
 				min-height: 110px;
 				text-align: right;
-				.current-conditions { font-size: 2em; }
+				.current-conditions { font-size: 2em; line-height: 1em; }
 			}
 		}
 
@@ -90,7 +90,7 @@
 				.current-date { font-size: 2em; }
 
 				div:nth-child(4) {
-					.current-conditions { font-size: 3em; }
+					.current-conditions { font-size: 2.5em; }
 				}
 			}
 		}

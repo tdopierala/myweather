@@ -1,7 +1,7 @@
 <template>
 	<div class="forecasts-wrapper">
 
-		<SearchBox />
+		<SearchBox v-on:getPlace="getPlace"/>
 
 		<DailyVideos />
 
@@ -67,6 +67,7 @@ export default {
 			Axios.get(`${api}data/2.5/forecast/?lat=${pos.lat}&lon=${pos.lng}&APPID=${appid}`)
 				.then((response) => {
 					const forecasts = response.data.list;
+					this.forecasts = [];
 
 					let day = 0;
 
@@ -81,6 +82,12 @@ export default {
 						}
 					}
 				});
+		},
+		getPlace(place) {
+			this.getWeather({
+				lat: place.geometry.location.lat(),
+				lng: place.geometry.location.lng(),
+			});
 		},
 	},
 	created() {
