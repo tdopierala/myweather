@@ -6,7 +6,7 @@
 				<div class="col-12">
 					<div class="row">
 						<div class="d-sm-none d-md-block d-xl-none col-md-1 col-lg-2"></div>
-						<!-- d-none d-sm-block d-lg-none -->
+
 						<div class="col-sm-12 col-md-10 col-lg-8 col-xl-6 current-location">
 							<div>
 								<h3 class="current-place">{{ weather.location }}</h3>
@@ -38,7 +38,6 @@
 								<div>{{ temp(forecast.main.temp_max) }}&deg;</div>
 								<div>{{ temp(forecast.main.temp_min) }}&deg;</div>
 								<div>{{ forecast.weather[0].main }}</div>
-								<!-- <div>RealFeel<br/>25&deg;</div> -->
 							</div>
 						</div>
 					</div>
@@ -59,6 +58,8 @@ export default {
 		return {
 			background: 'https://picsum.photos/id/1057/2050/500',
 			style: 'background-image:url(https://picsum.photos/id/323/2050/500)',
+
+			// TODO: dynamicly background change
 		};
 	},
 	props: [
@@ -80,9 +81,6 @@ export default {
 			return temp;
 		},
 		shortDay(days) { return moment().add(days, 'd').format('dd'); },
-	},
-	created() {
-		// console.log(this.forecasts);
 	},
 };
 </script>

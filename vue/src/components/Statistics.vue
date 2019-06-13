@@ -111,8 +111,6 @@ export default {
 				for (let i = 0; i < response.data.weather.length; i += 1) {
 					const weather = response.data.weather[i];
 					weather.id = i + 1;
-					// const date = new Date(weather.created);
-					// weather.created = date.getFullYear() + '.' + date.getMonth() + '.' + date.getDate();
 					weather.created = moment(weather.created).format('YYYY-MM-DD HH:mm:ss');
 					this.weatherHistory.push(weather);
 				}

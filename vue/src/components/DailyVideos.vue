@@ -12,7 +12,6 @@
 					v-bind:key="index">
 					<figure>
 						<a href="#" v-on:click="showVideo(video, $event)">
-							<!-- <img src="https://picsum.photos/id/10/268/155" alt="video1"> -->
 							<img v-bind:src="`https://img.youtube.com/vi/${video}/0.jpg`" v-bind:alt="video">
 							<font-awesome-icon icon="play" />
 						</a>

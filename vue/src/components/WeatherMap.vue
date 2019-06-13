@@ -49,8 +49,6 @@ export default {
 
 				Axios.get(`${api}data/2.5/weather?lat=${lat}&lon=${lng}&APPID=${appid}`)
 					.then((response) => {
-						// console.log(response.data);
-
 						const reqTime = new Date().getTime() - reqStart;
 
 						const weather = {
@@ -79,7 +77,6 @@ export default {
 
 						Axios.post('https://api.dopierala.net.pl/api/weather', weather, postHeaders)
 							.then(() => {
-								// console.log(getResponse);
 								this.sendingData = false;
 							});
 
@@ -125,7 +122,6 @@ export default {
 			this.google = await gmapsInit();
 			// const geocoder = new google.maps.Geocoder();
 			this.map = new this.google.maps.Map(
-				// this.$el,
 				document.getElementById('googleMap'),
 				this.mapSettings,
 			);

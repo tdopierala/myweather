@@ -2,13 +2,11 @@
 	<div class="search-box-wrapper">
 		<!------------- SearchBox ---------------->
 		<div class="container">
-			<!-- <div class="mediaTest"></div> -->
 			<div class="row">
 				<div class="col-12 col-lg-6">
 					<form>
 						<input type="text" name="search" id="locSearch" placeholder="Search location">
 						<a href="#">
-							<!-- <i class="fa fa-search"></i> <i class="fas fa-search"></i> -->
 							<font-awesome-icon icon="search" />
 						</a>
 					</form>
@@ -43,18 +41,6 @@ export default {
 			console.log('fillInAddress');
 		},
 	},
-	/* computed: {
-		google: {
-			set: (val) => {
-				console.log('google setter');
-				this.googleHolder = val;
-			},
-			get: () => {
-				console.log('google getter');
-				return this.googleHolder;
-			},
-		},
-	}, */
 	async mounted() {
 		try {
 			const search = document.getElementById('locSearch');
@@ -77,10 +63,6 @@ export default {
 				this.place = autocomplete.getPlace();
 
 				this.$emit('getPlace', this.place);
-				/* console.log(place.photos.length);
-				for (let i = 0; i < place.photos.length; i += 1) {
-					console.log(place.photos[i].getUrl());
-				} */
 			});
 
 			/*
