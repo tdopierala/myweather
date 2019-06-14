@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
+
 /**
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="App\Repository\WeatherRepository")
  * @ORM\Table(name="weather")
  */
-class Weather 
+class Weather
 {
 	/**
 	 * @ORM\Column(type="integer")

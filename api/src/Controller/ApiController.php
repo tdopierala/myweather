@@ -17,6 +17,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 
 use App\Entity\Article;
 use App\Entity\Weather;
+
 /**
  * Brand controller.
  * @Route("/api")
@@ -30,7 +31,7 @@ class ApiController extends FOSRestController
 	 */
 	public function optionsWeatherAction()
 	{
-		return View::create([], Response::HTTP_OK , []);
+		return View::create([], Response::HTTP_OK, []);
 	}
 
 	/**
@@ -54,7 +55,7 @@ class ApiController extends FOSRestController
 			"top_location" => $topLocation,
 			"temperatures" => $temperatures[0],
 			"weather" => $weather
-		], Response::HTTP_OK , []);
+		], Response::HTTP_OK, []);
 	}
 
 	/**
@@ -66,24 +67,24 @@ class ApiController extends FOSRestController
 	{
 		$weather = new Weather();
 		
-		$weather->setCityid(	$request->get('cityid'));
-		$weather->setCityname(	$request->get('cityname'));
-		$weather->setLatitude(	$request->get('latitude'));
-		$weather->setLongitude(	$request->get('longitude'));
-		$weather->setTempavg(	$request->get('tempavg'));
-		$weather->setTempmin(	$request->get('tempmin'));
-		$weather->setTempmax(	$request->get('tempmax'));
-		$weather->setClouds(	$request->get('clouds'));
-		$weather->setWindspeed(	$request->get('windspeed'));
-		$weather->setWinddeg(	$request->get('winddeg'));
+		$weather->setCityid($request->get('cityid'));
+		$weather->setCityname($request->get('cityname'));
+		$weather->setLatitude($request->get('latitude'));
+		$weather->setLongitude($request->get('longitude'));
+		$weather->setTempavg($request->get('tempavg'));
+		$weather->setTempmin($request->get('tempmin'));
+		$weather->setTempmax($request->get('tempmax'));
+		$weather->setClouds($request->get('clouds'));
+		$weather->setWindspeed($request->get('windspeed'));
+		$weather->setWinddeg($request->get('winddeg'));
 		$weather->setDescription($request->get('description'));
-		$weather->setCondid(	$request->get('condid'));
-		$weather->setDt(		$request->get('dt'));
+		$weather->setCondid($request->get('condid'));
+		$weather->setDt($request->get('dt'));
 
 		$em = $this->getDoctrine()->getManager();
 		$em->persist($weather);
 		$em->flush();
 		
-		return View::create($weather, Response::HTTP_CREATED , []);
+		return View::create($weather, Response::HTTP_CREATED, []);
 	}
 }
