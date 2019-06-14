@@ -8,7 +8,7 @@ export default new Router({
 		{
 			path: '/',
 			name: 'forecasts',
-			component: () => import('./Forecasts/Map.vue'),
+			component: () => import('./components/Forecasts.vue'),
 		},
 		{
 			path: '/map',
